@@ -1,0 +1,177 @@
+<html>
+  <head>
+	  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>i5ting_ztree_toc:JavaScript的浅谈及认识</title>
+		<link href="toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+		<link href="toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+	  <style>
+		pre {
+		    counter-reset: line-numbering;
+		    border: solid 1px #d9d9d9;
+		    border-radius: 0;
+		    background: #fff;
+		    padding: 0;
+		    line-height: 23px;
+		    margin-bottom: 30px;
+		    white-space: pre;
+		    overflow-x: auto;
+		    word-break: inherit;
+		    word-wrap: inherit;
+		}
+
+		pre a::before {
+		  content: counter(line-numbering);
+		  counter-increment: line-numbering;
+		  padding-right: 1em; /* space after numbers */
+		  width: 25px;
+		  text-align: right;
+		  opacity: 0.7;
+		  display: inline-block;
+		  color: #aaa;
+		  background: #eee;
+		  margin-right: 16px;
+		  padding: 2px 10px;
+		  font-size: 13px;
+		  -webkit-touch-callout: none;
+		  -webkit-user-select: none;
+		  -khtml-user-select: none;
+		  -moz-user-select: none;
+		  -ms-user-select: none;
+		  user-select: none;
+		}
+
+		pre a:first-of-type::before {
+		  padding-top: 10px;
+		}
+
+		pre a:last-of-type::before {
+		  padding-bottom: 10px;
+		}
+
+		pre a:only-of-type::before {
+		  padding: 10px;
+		}
+
+		.highlight { background-color: #ffffcc } /* RIGHT */
+		</style>
+  </head>
+  <body>
+	  <div>
+				<div style='width:25%;'>
+						<ul id="tree" class="ztree" style='width:100%'>
+
+						</ul>
+				</div>
+        <div id='readme' style='width:70%;margin-left:20%;'>
+          	<article class='markdown-body'>
+            	<h1 id="javascript">JavaScript</h1>
+<h2 id="javascript-">JavaScript基础知识</h2>
+<h3 id="javascript-">JavaScript的基本组成</h3>
+<pre><code>* ECMAScript     规定了JavaScript的语法规范
+* DOM            提供了访问页面元素的API
+* BOM            提供了访问浏览器相关信息的API
+</code></pre><h3 id="javascript-">JavaScript的数据类型</h3>
+<h4 id="-">简单类型</h4>
+<pre><code>* string
+* number
+* boolean
+* undefined
+</code></pre><h4 id="-">复杂类型</h4>
+<pre><code>* Object
+* function
+* Array
+* Date
+* RegExp
+* Math（对象）
+* String
+* Number
+* Boolean
+* null(特殊的)
+</code></pre><h4 id="-typeof">获取类型的关键字 typeof</h4>
+<pre><code class="lang-js">typeof 变量名（表达式）
+//返回值为字符串类型
+</code></pre>
+<h4 id="-">引用类型 值类型</h4>
+<h5 id="-">引用类型</h5>
+<pre><code>存储的是数据的地址的数据就是引用类型的数据
+</code></pre><h5 id="-">值类型</h5>
+<pre><code>存储的数据本身的数据就是值类型的数据
+</code></pre><h5 id="-">赋值特征</h5>
+<pre><code>* 值类型进行赋值的时候，直接将数据复制一份赋值给新的变量，两份数据互不影响
+* 引用类型进行赋值的时候，将数据的地址复制一份赋值给新的变量，两个变量指向同一个对象，两个互相影响
+</code></pre><h3 id="in-">in 关键字</h3>
+<h4 id="for-in">for-in</h4>
+<pre><code>用来遍历对象的属性的，每次遍历到的属性是字符串类型的
+```js
+    for(var k in obj){
+        //这里的k就是每个键
+    }
+```
+</code></pre><h4 id="in">in</h4>
+<pre><code>检测对象中是否存在某个属性
+```js
+属性名 in 对象名
+```
+</code></pre><h3 id="-">逻辑中断</h3>
+<h4 id="-">||</h4>
+<pre><code>表达式1 || 表达式2
+如果表达式1为真，就返回表达式1，如果表达式1位假，则返回表达式2
+</code></pre><h4 id="-">&amp;&amp;</h4>
+<pre><code>表达式1 &amp;&amp; 表达式2
+如果表达式1为真，就返回表达式2，如果表达式1位假，则返回表达式1
+</code></pre><h3 id="delete-">delete关键字</h3>
+<pre><code>* 删除未使用var声明的变量
+* 删除对象的属性
+* `window`有自带的属性`name`
+</code></pre><h3 id="continue-break">continue break</h3>
+<pre><code>* continue 跳出本次循环，继续下次循环
+* break 跳出整个循环，继续执行循环之后的代码
+</code></pre><h3 id="-">对象的动态特性</h3>
+<pre><code>对象在创建出来之后，可以随时的新增成员（方法和属性），这就是对象的动态特性
+</code></pre><h3 id="-">调试工具的使用</h3>
+<pre><code>* 普通断点
+* 条件断点
+
+* Elements  审查元素 做css
+* Console  跟页面在同一个js的运行环境中，可以写任何的js代码，也可以用js操作页面元素
+* Sources  所有的资源文件都在这里，最重要的就是可以在这里对js代码进行断点调试
+</code></pre><h3 id="-">异常处理</h3>
+<pre><code class="lang-js">try{
+    //可能出现异常的代码
+}catch(e){
+    //e 异常对象，异常信息
+    //捕获异常后的处理代码
+}finally{
+    //不论是否发生异常，都会执行的代码
+}
+</code></pre>
+<h2 id="-">面向对象简单介绍</h2>
+<h3 id="-">面向对象的基本概念</h3>
+<pre><code>面向对象是一种思维方式，他是将解决问题的关注点放到了解决问题所需要的一些列对象身上
+</code></pre><h3 id="-">面向过程的基本概念</h3>
+<pre><code>面向过程是一种思维方式，他是将解决问题的关注点放到了解决问题的每一个详细的步骤上
+</code></pre><h3 id="-">面向对象就是对面向过程的封装</h3>
+<p><img src="" alt=""></p>
+
+          	</article>
+        </div>
+		</div>
+  </body>
+</html>
+<script type="text/javascript" src="toc/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="toc/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="toc/js/ztree_toc.js"></script>
+<script type="text/javascript" src="toc_conf.js"></script>
+
+<SCRIPT type="text/javascript" >
+<!--
+$(document).ready(function(){
+    var css_conf = eval(markdown_panel_style);
+    $('#readme').css(css_conf)
+    
+    var conf = eval(jquery_ztree_toc_opts);
+		$('#tree').ztree_toc(conf);
+});
+//-->
+</SCRIPT>
